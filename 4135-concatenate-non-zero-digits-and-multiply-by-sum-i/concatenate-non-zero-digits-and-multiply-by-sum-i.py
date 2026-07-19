@@ -2,20 +2,15 @@ class Solution:
     def sumAndMultiply(self, n: int) -> int:
         temp=0
         s=0
-        temp_1=0
+        place=1
         while n>0:
             c=n%10
             if c!=0:
-                temp=temp*10
-                temp=temp+c
+                temp=c*place+temp
+                place=place*10
                 s=s+c
             n=n//10
 
-        while temp>0:
-            d=temp%10
-            temp_1=temp_1*10
-            temp_1=temp_1+d
-            temp=temp//10
-
-        return temp_1*s
+        
+        return temp*s
         
