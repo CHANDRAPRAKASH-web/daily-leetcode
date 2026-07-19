@@ -1,15 +1,7 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
         a,b=min(nums),max(nums)
-        while a>0 and b>0:
-            if a>b:
-                a=a%b
-            else:
-                b=b%a
-
-        if a==0:
-            return b
-        else:
-            return a
-
+        while b>0:
+            a,b=b,a%b
+        return a
         
