@@ -10,8 +10,10 @@ class Solution:
         for i in nums:
             if i>m:
                 m=i
-            c=gcd(i,m)
-            prefix.append(c)
+                prefix.append(i)
+            else:
+                c=gcd(i,m)
+                prefix.append(c)
 
         prefix.sort()
 
