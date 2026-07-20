@@ -7,6 +7,9 @@ class Solution:
 
         for i in magazine:
             b[i]=1+b.get(i,0)
+        
+        if len(ransomNote)>len(magazine):
+            return False
 
         for i in a:
             if a[i]>b.get(i,0):
