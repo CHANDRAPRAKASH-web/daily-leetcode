@@ -4,12 +4,12 @@ class Solution:
         p,n=0,1
         a=[1]*(len(nums))
 
-        for i in range(len(nums)):
-            if nums[i]>0:
-                a[p]=nums[i]
+        for i in nums:
+            if i>0:
+                a[p]=i
                 p+=2
             else:
-                a[n]=nums[i]
+                a[n]=i
                 n+=2
 
         return a
