@@ -7,7 +7,8 @@ class Solution:
             if i in balloon:
                 counter[i]+=1
 
-        if any(c not in balloon for c in counter):
-            return False
-        else:
-            return min(counter['b'],counter['a'],counter['l']//2,counter['o']//2,counter['n'])
+        for c in balloon:
+            if c not in counter:
+                return 0
+        
+        return min(counter['b'],counter['a'],counter['l']//2,counter['o']//2,counter['n'])
