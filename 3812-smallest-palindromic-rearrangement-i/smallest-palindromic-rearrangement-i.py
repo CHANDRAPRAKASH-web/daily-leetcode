@@ -3,15 +3,11 @@ class Solution:
        
        p=len(s)//2
        bucket=[0]*26
-       left=""
 
        for i in range(p):
         bucket[ord(s[i])-ord('a')]+=1
 
-       for i in range(26):
-        if bucket[i]>0:
-            left+=chr(i+ord('a'))*bucket[i]
-
+       left="".join(chr(i+ord('a'))*bucket[i] for i in range(26) if bucket[i]>0)
 
        mid = s[p] if len(s)%2==1 else ""
 
