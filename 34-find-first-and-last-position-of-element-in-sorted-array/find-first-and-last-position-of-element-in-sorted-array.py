@@ -6,7 +6,7 @@ class Solution:
         r=n+1
         count=0
         while r<len(nums):
-            if nums[l]==target and l<=n and l>=0:
+            if nums[l]==target and l>=0:
                 res[0]=min(res[0],l)
                 res[1]=max(res[1],l)
                 count+=1
