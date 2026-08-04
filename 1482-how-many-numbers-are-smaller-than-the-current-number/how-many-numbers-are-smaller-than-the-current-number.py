@@ -1,14 +1,28 @@
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        count=[0]*101
+        a={}
         res=[]
-        for i in range(0,len(nums)):
-            count=0
-            for j in range(0,len(nums)):
-                if i!=j:
-                    if nums[i]>nums[j]:
-                        count+=1
-            res.append(count)
+        prev=0
+
+        for i in nums:
+            count[i]+=1
+
+        for i in range(101):
+            if count[i]>0:
+                a[i]=prev
+                prev+=count[i]
+
+        for i in nums:
+            res.append(a[i])
 
 
         return res
+
+       
+
+
+        
+
+       
       
