@@ -1,21 +1,12 @@
 class Solution:
     def subarraySum(self, nums: List[int]) -> int:
-        prefix=[]
-        cur=0
-        for i in nums:
-            cur+=i
-            prefix.append(cur)
-
         total_sum=0
-
-        for i,val in enumerate(nums):
-            right=i
-            left=max(0,i-val)
-            if left==0:
-                total_sum+=prefix[right]
+        for i in range(len(nums)):
+            start=max(0,i-nums[i])
+            if i>0:
+                nums[i]+=nums[i-1]
+            if start==0:
+                total_sum+=nums[i]
             else:
-                total_sum+=prefix[right]-prefix[left-1]
-
+                total_sum+=nums[i]-nums[start-1]
         return total_sum
-
-        
