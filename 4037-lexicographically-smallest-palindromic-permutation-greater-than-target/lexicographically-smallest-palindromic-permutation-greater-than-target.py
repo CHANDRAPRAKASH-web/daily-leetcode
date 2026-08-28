@@ -7,18 +7,17 @@ class Solution:
         oddc=''
         for i,freq in enumerate(f):
             if freq%2==1:
-                if oddc=="":
+                if oddc=='':
                     oddc=chr(i+ord('a'))
                 else:
                     return ''
             f[i]//=2
-
         p=[]
         for i in range(n//2):
             valid=False
             for ci in range(26):
                 c=chr(ci+ord('a'))
-                if not f[ci] or  c<target[i]:
+                if not f[ci] or c<target[i]:
                     continue
                 if c>target[i]:
                     f[ci]-=1
@@ -27,7 +26,6 @@ class Solution:
                         if f[cci]>0:
                             p.append(f[cci]*chr(cci+ord('a')))
                     return "".join(p+[oddc]+p[::-1])
-
                 f[ci]-=1
                 p.append(c)
                 copy=p[::]
@@ -43,4 +41,5 @@ class Solution:
                 return ""
         out="".join(p+[oddc]+p[::-1])
         return out if out>target else ""
-        
+                
+       
