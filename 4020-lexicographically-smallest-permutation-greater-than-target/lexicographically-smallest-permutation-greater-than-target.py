@@ -1,38 +1,42 @@
 class Solution:
     def lexGreaterPermutation(self, s: str, target: str) -> str:
         n=len(s)
-        fm=defaultdict(int)
-        for i in s:
-            fm[i]+=1
+        f=[0]*26
         res=[]
+        for i in s:
+            f[ord(i)-ord('a')]+=1
 
-        for ti in range(n):
-            t=target[ti]
-            if fm[t]>0:
-                fm[t]-=1
-                largest=[]
-                for ci in range(25,-1,-1):
-                    c=chr(ci+ord('a'))
-                    if fm[c]>0:
-                        largest.append(c*fm[c])
-
-                if "".join(largest)>target[ti+1:]:
-                    res.append(t)
+        for i in range(n):
+            valid=False
+            t=target[i]
+            for ci in range(26):
+                c=chr(ci+ord('a'))
+                if not f[ci] or c<t:
                     continue
-                fm[t]+=1
-        
-            for nti in range(ord(t)-ord('a')+1,26):
-                c=chr(nti+ord('a'))
-                if fm[c]>0:
+                if c>t:
                     res.append(c)
-                    fm[c]-=1
+                    f[ci]-=1
                     smallest=[]
-                    for ci in range(26):
-                        c=chr(ci+ord('a'))
-                        if fm[c]>0:
-                            smallest.append(c*fm[c])
-
+                    for cci in range(26):
+                        if f[cci]>0:
+                            smallest.append(f[cci]*chr(cci+ord('a')))
                     return "".join(res+smallest)
-            return ""
+
+                res.append(c)
+                f[ci]-=1
+                largest=[]
+                for cci in range(25,-1,-1):
+                    if f[cci]>0:
+                        largest.append(f[cci]*chr(cci+ord('a')))
+                if "".join(largest)>target[i+1:]:
+                    valid=True
+                    break
+                f[ci]+=1
+                res.pop()
+            
+            if not valid:
+                return ""
         return ""
-    
+
+
+
