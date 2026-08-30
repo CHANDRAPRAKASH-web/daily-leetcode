@@ -1,14 +1,16 @@
 class Solution:
     def countSpecialIntegers(self, nums: list[int]) -> int:
-        seen = set()
-        special = set()
+        res=set()
+        count=set()
         
-        for i, num in enumerate(nums):
-            if num not in seen:
-                seen.add(num)
-                special.add(num)
-            elif nums[i - 1] != num:
-                # If seen before but not immediately preceding, it's split into multiple blocks
-                special.discard(num)
-                
-        return len(special)
+        for i,num in enumerate(nums):
+            if num not in count:
+                count.add(num)
+                res.add(num)
+            elif num!=nums[i-1]:
+                res.discard(num)
+        return len(res)
+
+
+
+        
