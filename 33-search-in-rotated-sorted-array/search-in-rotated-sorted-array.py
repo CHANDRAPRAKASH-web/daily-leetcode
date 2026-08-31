@@ -5,7 +5,10 @@ class Solution:
             mid=(l+r)//2
             if nums[mid]==target:
                 return mid
-            if nums[l]<=nums[mid]:
+            if nums[l]==nums[r]==nums[mid]:
+                l+=1
+                r-=1
+            elif nums[l]<=nums[mid]:
                 if target>=nums[l] and target<=nums[mid]:
                     r=mid-1
                 else:
