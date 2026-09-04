@@ -1,14 +1,15 @@
 class Solution:
     def firstStableIndex(self, nums: list[int], k: int) -> int:
-        min_value=float('inf')
-        max_value=float('-inf')
-        min_list=[]
-        for i in range(len(nums)-1,-1,-1):
-            min_value=min(min_value,nums[i])
-            min_list.append(min_value)
-        min_list.reverse()
-        for i in range(len(nums)):
-            max_value=max(nums[i],max_value)
-            if max_value-min_list[i]<=k:
+        n=len(nums)
+        mx=float('-inf')
+        suffix=[0]*n
+        suffix[n-1]=nums[-1]
+        for i in range(n-2,-1,-1):
+            suffix[i]=min(suffix[i+1],nums[i])
+        for i in range(n):
+            mx=max(mx,nums[i])
+            if mx-suffix[i]<=k:
                 return i
         return -1
+
+        
