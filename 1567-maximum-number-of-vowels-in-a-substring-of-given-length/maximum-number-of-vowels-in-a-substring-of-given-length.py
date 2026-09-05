@@ -9,6 +9,8 @@ class Solution:
                 count+=1
             if r>=k-1:
                 max_count=max(max_count,count)
+                if max_count==k:
+                    break
                 if s[l] in vowels:
                     count-=1
                 l+=1
