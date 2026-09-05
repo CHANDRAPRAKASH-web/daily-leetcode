@@ -1,7 +1,7 @@
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
         count=0
-        max_count=float('-inf')
+        max_count=0
         vowels={'a','e','i','o','u'}
         l=0
         for r in range(len(s)):
@@ -12,7 +12,7 @@ class Solution:
                 if s[l] in vowels:
                     count-=1
                 l+=1
-        return 0 if max_count==float('-inf') else max_count
+        return max_count
 
 
         
